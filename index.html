@@ -332,7 +332,7 @@
     background:linear-gradient(90deg,transparent,var(--s3) 30%,var(--s5) 50%,var(--s3) 70%,transparent);
   }
   .csub{font-size:.88rem;color:var(--s3);line-height:1.85;font-weight:300;max-width:440px;margin-bottom:60px}
-  .cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+  .cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;justify-content:center;}
 
   /* -- CONNECT CARD -- */
   .cc{
@@ -517,24 +517,14 @@
   <div class="hcorner br"></div>
 
   <!-- Avatar with rotating titanium ring -->
-  <div class="av" onclick="document.getElementById('pi').click()" title="Upload foto profil">
+  <div class="av">
     <div class="av-outer"></div>
     <div class="aw">
       <img id="pimg" src="profile.jpg" alt="Inpration">
-      <div class="aph" id="aph">
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-          <circle cx="22" cy="15" r="8" stroke="white" stroke-width="1.2"/>
-          <path d="M4 42c0-9.94 8.059-18 18-18s18 8.06 18 18" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
-        </svg>
-      </div>
-    </div>
-    <div class="atip">Tap to add photo</div>
-  </div>
-  <input type="file" id="pi" accept="image/*" onchange="loadAv(event)">
-
+      
   <h1 class="hname">INPRATION</h1>
   <div class="hrule"></div>
-  <p class="hrole">Photographer &nbsp;·&nbsp; Videographer</p>
+  <p class="hrole">PEMBURU &nbsp;·&nbsp; DOLLAR</p>
   <p class="hsub">Menangkap momen, merekam cerita.<br>Satu frame pada satu waktu.</p>
 
   <div class="hscroll">
@@ -683,15 +673,6 @@ const titleObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e
 document.querySelectorAll('.stitle').forEach(el=>titleObs.observe(el));
 
 // AVATAR
-function loadAv(e){
-  const f=e.target.files[0];if(!f)return;
-  const r=new FileReader();
-  r.onload=ev=>{
-    const i=document.getElementById('pimg');
-    i.src=ev.target.result;i.style.display='block';
-    document.getElementById('aph').style.display='none';
-  };
-  r.readAsDataURL(f);
 }
 
 // GALLERY

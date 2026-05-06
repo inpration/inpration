@@ -521,7 +521,7 @@
     <div class="av-outer"></div>
     <div class="aw">
       <img id="pimg" src="profile.jpg" alt="Inpration">
-      
+   </div>    
   <h1 class="hname">INPRATION</h1>
   <div class="hrule"></div>
   <p class="hrole">PEMBURU &nbsp;·&nbsp; DOLLAR</p>
@@ -544,17 +544,9 @@
       <div class="stitle animated rev d1">Visual Stories</div>
     </div>
     <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
-      <button class="upbtn" onclick="document.getElementById('gi').click()">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
-        </svg>
-        Upload Foto
-      </button>
-      <span class="gcnt" id="gcnt">0 foto</span>
-    </div>
+  <span class="gcnt" id="gcnt">Visual Gallery</span>
+</div>
   </div>
-  <input type="file" id="gi" accept="image/*" multiple onchange="addPh(event)">
-
   <div class="ggrid" id="gg">
     <div class="gempty" id="ge">
       <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
@@ -562,7 +554,7 @@
         <circle cx="28" cy="28" r="9" stroke="white" stroke-width="1.2"/>
         <circle cx="44" cy="17" r="3.5" fill="white" opacity=".3"/>
       </svg>
-      <p>Klik "Upload Foto" untuk menambah foto</p>
+      <p>Selected visual moments</p>
     </div>
   </div>
 </section>
@@ -673,29 +665,9 @@ const titleObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e
 document.querySelectorAll('.stitle').forEach(el=>titleObs.observe(el));
 
 // AVATAR
-}
+
 
 // GALLERY
-let photos=[],lbI=0;
-function addPh(e){
-  const files=Array.from(e.target.files),grid=document.getElementById('gg'),emp=document.getElementById('ge');
-  if(emp)emp.remove();
-  files.forEach(f=>{
-    const r=new FileReader();
-    r.onload=ev=>{
-      const src=ev.target.result,idx=photos.length,mod=idx%6;
-      photos.push(src);
-      const d=document.createElement('div');
-      d.className=mod===2?'gi tall':mod===5?'gi wide':'gi';
-      d.innerHTML=`<img src="${src}" alt="" loading="lazy"><div class="gov"><span>View</span></div>`;
-      d.onclick=()=>lbOp(idx);
-      grid.appendChild(d);
-      document.getElementById('gcnt').textContent=`${photos.length} foto`;
-    };
-    r.readAsDataURL(f);
-  });
-  e.target.value='';
-}
 
 // LIGHTBOX
 const lb=document.getElementById('lb'),lbi=document.getElementById('lbi'),lbct=document.getElementById('lbct');

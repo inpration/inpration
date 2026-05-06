@@ -164,7 +164,15 @@
   .hcorner.br{bottom:18%;right:14%;border-width:0 1px 1px 0}
 
   /* avatar */
-  .av{margin-bottom:44px;animation:fu .85s .1s both;position:relative}
+  .av{
+  width:150px;
+  height:150px;
+  margin:0 auto 44px;
+  animation:fu .85s .1s both;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;}
   .av-outer {
     width:150px;height:150px;border-radius:50%;
     position:absolute;top:-6px;left:-6px;right:-6px;bottom:-6px;
@@ -177,7 +185,7 @@
     width:150px;height:150px;border-radius:50%;
     background:var(--b2);
     overflow:hidden;display:flex;align-items:center;justify-content:center;
-    cursor:pointer;position:relative;z-index:1;
+    position:relative;z-index:1;
     border:2px solid var(--s1);
     box-shadow:0 0 0 4px var(--b1), 0 0 32px rgba(120,160,190,.12);
     transition:border-color .4s,box-shadow .4s;
@@ -187,10 +195,6 @@
     box-shadow:0 0 0 4px var(--b1), 0 0 40px rgba(140,180,210,.2);
   }
   .aw img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%}
-  .aph{display:none;flex-direction:column;align-items:center;gap:6px}
-  .aph svg{opacity:.16}
-  .atip{font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.14em;color:var(--s2);text-transform:uppercase;margin-top:10px}
-  #pi{display:none}
 
   /* HERO NAME — main titanium shine */
   .hname {
@@ -519,13 +523,15 @@
   <!-- Avatar with rotating titanium ring -->
   <div class="av">
     <div class="av-outer"></div>
+    
     <div class="aw">
       <img id="pimg" src="profile.jpg" alt="Inpration">
-   </div>    
+   </div> 
+  </div>  
   <h1 class="hname">INPRATION</h1>
   <div class="hrule"></div>
   <p class="hrole">PEMBURU &nbsp;·&nbsp; DOLLAR</p>
-  <p class="hsub">Menangkap momen, merekam cerita.<br>Satu frame pada satu waktu.</p>
+  <p class="hsub">Diam mengintai.<br>Bergerak mengeksekusi.</p>
 
   <div class="hscroll">
     <div class="spill"></div>

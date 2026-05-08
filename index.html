@@ -173,7 +173,12 @@
     position:absolute;left:0;right:0;height:1px;pointer-events:none;
     background:linear-gradient(to right,transparent,var(--s1) 14%,var(--s2) 50%,var(--s1) 86%,transparent);
   }
-  .hcross.top{top:25%} .hcross.bot{bottom:25%}
+  .hcross.top{top:25%} .hcross.bot{bottom:25%}  
+.hline,
+.hcross{opacity:.5;animation:gridPulse 4s ease-in-out infinite;}
+    
+@keyframes gridPulse{0%,100%{opacity:.25;}50%{opacity:.7;}
+  }
 
   /* corner marks */
   .hcorner {

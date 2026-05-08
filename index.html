@@ -190,7 +190,7 @@
   width:150px;
   height:150px;
   margin:0 auto 44px;
-  animation:fu .85s .1s both;
+  animation:fu .85s .1s both,avatarFloat 6s ease-in-out infinite;
   position:relative;
   display:flex;
   align-items:center;
@@ -237,7 +237,8 @@
 
   /* Override: separate opacity from color animation */
   .hname { animation:hnamein .9s .25s forwards, steelSweep 4.5s .25s linear infinite; }
-  @keyframes hnamein { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+  @keyframes hnamein { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none}
+  @keyframes avatarFloat{0%,100%{transform:translateY(0px);}50%{transform:translateY(-10px);}}
 
   .hrule{width:1px;height:56px;margin:24px auto;animation:fu .8s .4s both;
     background:linear-gradient(to bottom,transparent,var(--s3) 40%,var(--s3) 60%,transparent)}
@@ -771,5 +772,22 @@ document.addEventListener('keydown',e=>{
   }
 });
 </script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+
+<script>
+const lenis = new Lenis({
+  duration: 1.2,
+  smoothWheel: true,
+  smoothTouch: false
+})
+
+function raf(time) {
+  lenis.raf(time)
+  requestAnimationFrame(raf)
+}
+
+requestAnimationFrame(raf)
+</script> 
+  
 </body>
 </html>

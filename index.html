@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indra Nasution — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#000;--dark:#0a0a0a;--dark2:#0e0e0e;--dark3:#141414;
+  --gray:#2a2a2a;--gray2:#3a3a3a;
+  --steel:#8899aa;--silver:#b0bec5;--white:#f0f4f8;
+  --accent:#4fc3f7;
+  --glass:rgba(255,255,255,0.035);
+  --glass-border:rgba(255,255,255,0.07);
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:#000;color:var(--white);font-family:'Rajdhani',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:#000}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 3rem;
+  background:rgba(0,0,0,0.85);backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--glass-border);transition:background 0.3s;
+}
+.nav-logo{font-family:'Orbitron',monospace;font-size:0.9rem;font-weight:900;letter-spacing:0.3em;color:var(--accent);text-decoration:none}
+.nav-links{display:flex;gap:1.6rem;list-style:none;flex-wrap:wrap}
+.nav-links a{font-size:0.62rem;font-weight:600;letter-spacing:0.18em;color:var(--steel);text-decoration:none;text-transform:uppercase;transition:color 0.3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--accent);transition:width 0.3s}
+.nav-links a:hover{color:var(--accent)}.nav-links a:hover::after{width:100%}
+
+/* PROGRESS */
+.progress-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--accent),rgba(79,195,247,0.25));z-index:9999;width:0%;transition:width 0.1s}
+
+/* SECTIONS */
+section{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
+.section-inner{width:100%;max-width:1200px;margin:0 auto;padding:7rem 3.5rem 5rem}
+.section-label{font-family:'Orbitron',monospace;font-size:0.58rem;letter-spacing:0.5em;color:var(--accent);text-transform:uppercase;margin-bottom:0.8rem;display:flex;align-items:center;gap:0.8rem}
+.section-label::before{content:'';display:inline-block;width:24px;height:1px;background:var(--accent)}
+.section-title{font-family:'Orbitron',monospace;font-size:clamp(1.6rem,3.5vw,3rem);font-weight:700;letter-spacing:-0.02em;color:var(--white);margin-bottom:2.5rem;line-height:1.1}
+.section-title em{font-style:normal;color:transparent;-webkit-text-stroke:1px var(--silver)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(35px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:all 0.7s cubic-bezier(0.16,1,0.3,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(30px);transition:all 0.7s cubic-bezier(0.16,1,0.3,1)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(0.88);transition:all 0.6s cubic-bezier(0.16,1,0.3,1)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+
+/* ===================== HERO ===================== */
+#hero{background:#000;padding:0 3.5rem}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 75% 50%,rgba(79,195,247,0.055) 0%,transparent 70%),radial-gradient(ellipse 35% 35% at 15% 75%,rgba(120,144,156,0.04) 0%,transparent 60%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(79,195,247,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(79,195,247,0.03) 1px,transparent 1px);background-size:55px 55px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 0%,transparent 100%)}
+.hero-scan{position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);animation:scanDown 5s linear infinite;opacity:0.3;pointer-events:none}
+@keyframes scanDown{0%{top:0}100%{top:100%}}
+
+.hero-layout{position:relative;z-index:2;display:grid;grid-template-columns:220px 1fr;gap:4rem;align-items:center;max-width:1100px;width:100%}
+.hero-avatar-col{display:flex;flex-direction:column;align-items:center;gap:1.5rem}
+.avatar-frame{width:200px;height:200px;position:relative;border:1px solid rgba(79,195,247,0.25);padding:6px;animation:avatarPulse 4s ease-in-out infinite}
+@keyframes avatarPulse{0%,100%{box-shadow:0 0 0 0 rgba(79,195,247,0)}50%{box-shadow:0 0 30px 6px rgba(79,195,247,0.08)}}
+.avatar-inner{width:100%;height:100%;background:linear-gradient(135deg,var(--dark3) 0%,var(--gray) 100%);display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace;font-size:4rem;font-weight:900;color:var(--accent);letter-spacing:-0.05em;position:relative;overflow:hidden}
+.avatar-inner::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent 0deg,rgba(79,195,247,0.1) 60deg,transparent 120deg);animation:rotate 8s linear infinite}
+@keyframes rotate{to{transform:rotate(360deg)}}
+.avatar-corner{position:absolute;width:12px;height:12px;border-color:var(--accent);border-style:solid}
+.avatar-corner.tl{top:-1px;left:-1px;border-width:2px 0 0 2px}
+.avatar-corner.tr{top:-1px;right:-1px;border-width:2px 2px 0 0}
+.avatar-corner.bl{bottom:-1px;left:-1px;border-width:0 0 2px 2px}
+.avatar-corner.br{bottom:-1px;right:-1px;border-width:0 2px 2px 0}
+.avatar-status{display:flex;align-items:center;gap:0.5rem;font-family:'Orbitron',monospace;font-size:0.55rem;letter-spacing:0.2em;color:var(--accent)}
+.status-dot{width:6px;height:6px;background:#00e676;border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+
+.hero-content{opacity:0;transform:translateX(30px);animation:slideIn 0.9s 0.4s forwards}
+@keyframes slideIn{to{opacity:1;transform:translateX(0)}}
+.hero-greeting{font-family:'Orbitron',monospace;font-size:0.65rem;font-weight:400;letter-spacing:0.4em;color:var(--accent);text-transform:uppercase;margin-bottom:1rem}
+.hero-name{font-family:'Orbitron',monospace;font-size:clamp(2.5rem,6vw,5.5rem);font-weight:900;line-height:0.9;letter-spacing:-0.02em;margin-bottom:1.2rem}
+.hero-name span{display:block;color:transparent;-webkit-text-stroke:1px rgba(79,195,247,0.25);font-size:0.55em}
+.hero-name strong{display:block;background:linear-gradient(135deg,#f0f4f8 0%,#b0bec5 50%,#78909c 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-tagline{font-size:0.9rem;font-weight:600;color:var(--steel);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.5rem}
+.hero-intro{font-size:1rem;font-weight:400;color:var(--silver);max-width:520px;line-height:1.85;margin-bottom:2.5rem}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{font-family:'Rajdhani',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;padding:0.8rem 2rem;text-decoration:none;border:1px solid var(--accent);color:var(--accent);background:rgba(79,195,247,0.05);transition:all 0.3s;position:relative;overflow:hidden}
+.btn-primary::before{content:'';position:absolute;inset:0;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;z-index:-1}
+.btn-primary:hover{color:#000}.btn-primary:hover::before{transform:scaleX(1)}
+.btn-ghost{font-family:'Rajdhani',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;padding:0.8rem 2rem;text-decoration:none;border:1px solid var(--glass-border);color:var(--silver);background:transparent;transition:all 0.3s}
+.btn-ghost:hover{border-color:var(--silver);color:var(--white)}
+.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.4rem;opacity:0;animation:fadeUp 1s 1.5s forwards}
+.scroll-hint span{font-size:0.55rem;letter-spacing:0.3em;color:var(--steel);text-transform:uppercase}
+.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--accent),transparent);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:0.3}50%{opacity:1}}
+@keyframes fadeUp{to{opacity:1}}
+
+/* ===================== CAREER ===================== */
+#career{background:var(--dark)}
+.career-timeline{position:relative;padding-left:2rem}
+.career-timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--accent),var(--gray2))}
+.career-item{position:relative;margin-bottom:1.5rem;opacity:0;transform:translateX(-25px);transition:all 0.6s cubic-bezier(0.16,1,0.3,1)}
+.career-item.visible{opacity:1;transform:translateX(0)}
+.career-dot{position:absolute;left:-2.38rem;top:1.8rem;width:12px;height:12px;border:2px solid var(--accent);background:#000;transform:rotate(45deg);transition:background 0.3s}
+.career-item:hover .career-dot{background:var(--accent)}
+.career-card-inner{background:var(--glass);border:1px solid var(--glass-border);padding:1.5rem 1.8rem;position:relative;overflow:hidden;transition:border-color 0.3s,background 0.3s}
+.career-card-inner::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(79,195,247,0.2),transparent)}
+.career-card-inner:hover{border-color:rgba(79,195,247,0.2);background:rgba(255,255,255,0.05)}
+.career-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:0.6rem;flex-wrap:wrap}
+.career-period-badge{font-family:'Orbitron',monospace;font-size:0.58rem;font-weight:700;letter-spacing:0.2em;color:var(--accent);border:1px solid rgba(79,195,247,0.25);padding:0.3rem 0.8rem;white-space:nowrap;flex-shrink:0}
+.career-role{font-size:1.05rem;font-weight:700;color:var(--white)}
+.career-company{font-size:0.85rem;color:var(--steel);margin-bottom:0.8rem;letter-spacing:0.04em}
+.career-desc{font-size:0.92rem;color:var(--silver);line-height:1.75}
+.career-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1rem}
+.tag{font-size:0.6rem;letter-spacing:0.1em;font-weight:600;text-transform:uppercase;padding:0.25rem 0.7rem;border:1px solid var(--gray2);color:var(--steel)}
+.career-ico{position:absolute;top:1.2rem;right:1.2rem;font-size:1.5rem;opacity:0.12;pointer-events:none}
+
+/* ===================== EDUCATION ===================== */
+#education{background:var(--dark2)}
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem}
+.edu-card{background:var(--glass);border:1px solid var(--glass-border);padding:1.8rem;position:relative;overflow:hidden;opacity:0;transform:translateY(25px);transition:all 0.6s}
+.edu-card.visible{opacity:1;transform:translateY(0)}
+.edu-card:hover{border-color:rgba(79,195,247,0.2);background:rgba(255,255,255,0.05)}
+.edu-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(79,195,247,0.2),transparent)}
+.edu-icon{font-size:2rem;margin-bottom:1rem;display:block}
+.edu-period{font-family:'Orbitron',monospace;font-size:0.58rem;letter-spacing:0.25em;color:var(--accent);margin-bottom:0.5rem}
+.edu-degree{font-size:1rem;font-weight:700;color:var(--white);margin-bottom:0.3rem}
+.edu-school{font-size:0.85rem;color:var(--steel);margin-bottom:0.8rem}
+.edu-desc{font-size:0.9rem;color:var(--silver);line-height:1.7}
+
+/* ===================== INTERESTS ===================== */
+#interests{background:var(--dark)}
+.interests-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem}
+.interest-item{background:var(--glass);border:1px solid var(--glass-border);padding:1.8rem 1.2rem;text-align:center;position:relative;overflow:hidden;opacity:0;transform:scale(0.88);transition:all 0.5s}
+.interest-item.visible{opacity:1;transform:scale(1)}
+.interest-item:hover{border-color:rgba(79,195,247,0.25);background:rgba(255,255,255,0.055);transform:scale(1.04)}
+.interest-icon{font-size:2.2rem;margin-bottom:0.8rem;display:block}
+.interest-name{font-family:'Orbitron',monospace;font-size:0.6rem;font-weight:700;letter-spacing:0.15em;color:var(--white);text-transform:uppercase;margin-bottom:0.4rem}
+.interest-sub{font-size:0.78rem;color:var(--steel);line-height:1.4}
+.interest-item::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:1px;background:var(--accent);transition:width 0.3s}
+.interest-item:hover::after{width:70%}
+
+/* ===================== SPORTS ===================== */
+#sports{background:var(--dark2)}
+.sports-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.sport-card{background:var(--glass);border:1px solid var(--glass-border);padding:1.6rem;position:relative;overflow:hidden;opacity:0;transform:translateY(20px);transition:all 0.55s}
+.sport-card.visible{opacity:1;transform:translateY(0)}
+.sport-card:hover{border-color:rgba(79,195,247,0.2);background:rgba(255,255,255,0.05)}
+.sport-emoji{font-size:2rem;display:block;margin-bottom:0.8rem}
+.sport-name{font-family:'Orbitron',monospace;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;color:var(--accent);margin-bottom:0.3rem}
+.sport-cat{font-size:0.78rem;color:var(--steel)}
+.sport-bar-wrap{height:2px;background:var(--gray);margin:0.8rem 0 0.3rem}
+.sport-bar{height:100%;background:linear-gradient(90deg,var(--accent),rgba(79,195,247,0.25));width:0%;transition:width 1.3s ease}
+.sport-pct{font-family:'Orbitron',monospace;font-size:0.55rem;color:var(--steel);letter-spacing:0.1em}
+
+/* ===================== PETS ===================== */
+#pets{background:var(--dark)}
+.pets-layout{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.pets-visual{background:var(--glass);border:1px solid var(--glass-border);padding:3rem;text-align:center;position:relative;overflow:hidden}
+.pets-visual::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(79,195,247,0.2),transparent)}
+.pets-big-icon{font-size:6rem;display:block;animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.pets-name{font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:900;color:var(--white);margin:1rem 0 0.5rem}
+.pets-sub{font-size:0.85rem;color:var(--steel);letter-spacing:0.1em}
+.pets-text h3{font-family:'Orbitron',monospace;font-size:0.7rem;font-weight:700;color:var(--accent);letter-spacing:0.15em;margin-bottom:1.5rem}
+.pet-trait{display:flex;align-items:flex-start;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--glass-border)}
+.pet-trait:last-child{border:none}
+.pet-trait-icon{font-size:1.3rem;flex-shrink:0;margin-top:0.1rem}
+.pet-trait-title{font-size:0.95rem;font-weight:700;color:var(--white);margin-bottom:0.2rem}
+.pet-trait-desc{font-size:0.85rem;color:var(--silver);line-height:1.6}
+
+/* ===================== COMMUNITY ===================== */
+#community{background:var(--dark2)}
+.community-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem}
+.community-card{background:var(--glass);border:1px solid var(--glass-border);padding:1.8rem;position:relative;overflow:hidden;opacity:0;transform:translateX(20px);transition:all 0.6s;text-decoration:none;display:block}
+.community-card.visible{opacity:1;transform:translateX(0)}
+.community-card:hover{border-color:rgba(79,195,247,0.25);background:rgba(255,255,255,0.055);transform:translateY(-3px)}
+.community-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(79,195,247,0.2),transparent)}
+.comm-icon{font-size:2.2rem;margin-bottom:1rem;display:block}
+.comm-name{font-family:'Orbitron',monospace;font-size:0.7rem;font-weight:700;letter-spacing:0.15em;color:var(--white);margin-bottom:0.4rem}
+.comm-type{font-size:0.62rem;letter-spacing:0.15em;font-weight:600;color:var(--accent);text-transform:uppercase;margin-bottom:0.8rem}
+.comm-desc{font-size:0.88rem;color:var(--silver);line-height:1.7}
+.comm-badge{display:inline-block;margin-top:1rem;font-size:0.58rem;letter-spacing:0.15em;font-weight:700;text-transform:uppercase;padding:0.25rem 0.7rem;border:1px solid rgba(79,195,247,0.25);color:var(--accent)}
+
+/* ===================== CONTACT ===================== */
+#contact{background:var(--dark)}
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-info h3{font-family:'Orbitron',monospace;font-size:0.7rem;letter-spacing:0.2em;color:var(--accent);margin-bottom:1.5rem}
+.contact-item{display:flex;align-items:center;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--glass-border);text-decoration:none;opacity:0;transform:translateX(-15px);transition:opacity 0.5s,transform 0.5s}
+.contact-item.visible{opacity:1;transform:translateX(0)}
+.contact-icon{width:40px;height:40px;border:1px solid var(--glass-border);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;transition:all 0.3s}
+.contact-item:hover .contact-icon{border-color:rgba(79,195,247,0.4);background:rgba(79,195,247,0.07)}
+.contact-item-type{font-size:0.6rem;letter-spacing:0.2em;color:var(--steel);text-transform:uppercase;display:block}
+.contact-item-label{font-size:0.92rem;font-weight:600;color:var(--white);transition:color 0.3s}
+.contact-item:hover .contact-item-label{color:var(--accent)}
+.contact-form{display:flex;flex-direction:column;gap:1rem}
+.form-group{display:flex;flex-direction:column;gap:0.35rem}
+.form-label{font-size:0.6rem;letter-spacing:0.2em;color:var(--steel);text-transform:uppercase}
+.form-input{font-family:'Rajdhani',sans-serif;font-size:0.95rem;color:var(--white);background:var(--glass);border:1px solid var(--glass-border);padding:0.85rem 1rem;outline:none;transition:border-color 0.3s}
+.form-input:focus{border-color:rgba(79,195,247,0.4)}
+.form-input::placeholder{color:var(--gray2)}
+textarea.form-input{resize:vertical;min-height:110px}
+.form-submit{font-family:'Orbitron',monospace;font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;padding:0.9rem 1.5rem;border:1px solid var(--accent);color:var(--accent);background:transparent;cursor:pointer;transition:all 0.3s;position:relative;overflow:hidden}
+.form-submit::before{content:'';position:absolute;inset:0;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;z-index:-1}
+.form-submit:hover{color:#000}.form-submit:hover::before{transform:scaleX(1)}
+
+/* FOOTER */
+footer{padding:2.5rem 3.5rem;background:#000;border-top:1px solid var(--glass-border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-family:'Orbitron',monospace;font-size:0.75rem;font-weight:700;letter-spacing:0.3em;color:var(--accent)}
+.footer-copy{font-size:0.7rem;letter-spacing:0.08em;color:var(--steel)}
+
+/* PARTICLES */
+.particle{position:absolute;width:2px;height:2px;background:var(--accent);border-radius:50%;opacity:0;animation:particleFloat linear infinite;pointer-events:none}
+@keyframes particleFloat{0%{opacity:0;transform:translateY(80px)}10%{opacity:0.5}90%{opacity:0.15}100%{opacity:0;transform:translateY(-180px)}}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:0.8rem 1.2rem}.nav-links{gap:0.8rem}
+  .section-inner{padding:6rem 1.5rem 4rem}
+  #hero{padding:0 1.5rem}
+  .hero-layout{grid-template-columns:1fr;gap:2rem;text-align:center}
+  .hero-intro{margin:0 auto 2rem}.hero-cta{justify-content:center}
+  .avatar-frame{width:150px;height:150px}.avatar-inner{font-size:3rem}
+  .contact-layout,.pets-layout{grid-template-columns:1fr}
+  footer{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<nav>
+  <a href="#hero" class="nav-logo">IN</a>
+  <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#career">Career</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#interests">Interests</a></li>
+    <li><a href="#sports">Sports</a></li>
+    <li><a href="#pets">Pets</a></li>
+    <li><a href="#community">Community</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- =================== HOME =================== -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-scan"></div>
+
+  <div class="section-inner" style="display:flex;align-items:center">
+    <div class="hero-layout">
+
+      <div class="hero-avatar-col">
+        <div class="avatar-frame">
+          <div class="avatar-inner">
+            IN
+            <div class="avatar-corner tl"></div>
+            <div class="avatar-corner tr"></div>
+            <div class="avatar-corner bl"></div>
+            <div class="avatar-corner br"></div>
+          </div>
+        </div>
+        <div class="avatar-status">
+          <div class="status-dot"></div>
+          <span>Available</span>
+        </div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-greeting">// Halo, Selamat Datang!</div>
+        <h1 class="hero-name">
+          <span>Indra</span>
+          <strong>Nasution</strong>
+        </h1>
+        <p class="hero-tagline">Profesional · Wirausaha · Enthusiast</p>
+        <p class="hero-intro">
+          Seorang profesional berpengalaman di bidang keuangan dan operasional dengan rekam jejak
+          yang kaya — mulai dari industri pelayaran, jasa transportasi, wirausaha mandiri, hingga
+          kini berkiprah di perusahaan ritel nasional sebagai Account Payable. Berbasis di Manado,
+          Sulawesi Utara, dengan semangat belajar dan jiwa kewirausahaan yang tinggi.
+        </p>
+        <div class="hero-cta">
+          <a href="#career" class="btn-primary">Lihat Karir Saya</a>
+          <a href="#contact" class="btn-ghost">Hubungi Saya</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- =================== CAREER =================== -->
+<section id="career">
+  <div class="section-inner">
+    <div class="section-label">01 — Career</div>
+    <h2 class="section-title reveal">Perjalanan <em>Karir</em></h2>
+    <div class="career-timeline">
+
+      <div class="career-item">
+        <div class="career-dot"></div>
+        <div class="career-card-inner">
+          <div class="career-ico">🏢</div>
+          <div class="career-header">
+            <div>
+              <div class="career-role">Account Payable</div>
+              <div class="career-company">Perusahaan Ritel Nasional · Indonesia</div>
+            </div>
+            <div class="career-period-badge">2019 — Sekarang</div>
+          </div>
+          <div class="career-desc">
+            Bertanggung jawab atas pengelolaan utang usaha perusahaan ritel berskala nasional. Memastikan akurasi
+            pencatatan transaksi keuangan, rekonsiliasi vendor, verifikasi invoice, dan ketepatan waktu pembayaran
+            kepada pemasok. Berkoordinasi erat dengan tim keuangan, manajemen, dan vendor untuk menjaga arus kas
+            yang sehat serta kepatuhan terhadap prosedur keuangan perusahaan.
+          </div>
+          <div class="career-tags">
+            <span class="tag">Account Payable</span><span class="tag">Keuangan</span>
+            <span class="tag">Rekonsiliasi</span><span class="tag">Ritel</span><span class="tag">Invoice</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="career-item">
+        <div class="career-dot"></div>
+        <div class="career-card-inner">
+          <div class="career-ico">🚀</div>
+          <div class="career-header">
+            <div>
+              <div class="career-role">Wirausaha Mandiri</div>
+              <div class="career-company">Multi-Sektor Bisnis · Sulawesi Utara</div>
+            </div>
+            <div class="career-period-badge">2017 — 2019</div>
+          </div>
+          <div class="career-desc">
+            Menjalankan berbagai usaha secara mandiri meliputi distribusi <strong style="color:var(--white)">air bersih</strong>,
+            perdagangan <strong style="color:var(--white)">ikan laut</strong>, ekspor <strong style="color:var(--white)">arang kelapa</strong>,
+            bisnis <strong style="color:var(--white)">skincare</strong>, <strong style="color:var(--white)">pakaian</strong>, serta
+            <strong style="color:var(--white)">peralatan tidur dan dapur</strong>. Mengelola seluruh aspek operasional, rantai pasok,
+            pemasaran, dan keuangan secara langsung — mengasah jiwa kewirausahaan dan ketangguhan bisnis.
+          </div>
+          <div class="career-tags">
+            <span class="tag">Wirausaha</span><span class="tag">Air Bersih</span>
+            <span class="tag">Ikan Laut</span><span class="tag">Arang Kelapa</span>
+            <span class="tag">Skincare</span><span class="tag">Perdagangan</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="career-item">
+        <div class="career-dot"></div>
+        <div class="career-card-inner">
+          <div class="career-ico">⚓</div>
+          <div class="career-header">
+            <div>
+              <div class="career-role">Operasional Bongkar Muat Kapal</div>
+              <div class="career-company">Perusahaan Jasa Bongkar Muatan Kapal · Sulawesi Utara</div>
+            </div>
+            <div class="career-period-badge">2015 — 2017</div>
+          </div>
+          <div class="career-desc">
+            Menangani proses bongkar muat muatan kapal di lapangan. Memastikan efisiensi operasional,
+            keselamatan kerja, dan koordinasi antar tim buruh, operator alat berat, serta pihak kapal.
+            Mengelola dokumentasi muatan dan melaporkan progres kegiatan bongkar muat kepada manajemen pelabuhan.
+          </div>
+          <div class="career-tags">
+            <span class="tag">Bongkar Muat</span><span class="tag">Operasional</span>
+            <span class="tag">Pelabuhan</span><span class="tag">Logistik Maritim</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="career-item">
+        <div class="career-dot"></div>
+        <div class="career-card-inner">
+          <div class="career-ico">🚛</div>
+          <div class="career-header">
+            <div>
+              <div class="career-role">Operasional JPT (Jasa Pengurusan Transportasi)</div>
+              <div class="career-company">Perusahaan JPT / EMKL · Sulawesi Utara</div>
+            </div>
+            <div class="career-period-badge">2015 — 2017</div>
+          </div>
+          <div class="career-desc">
+            Mengurus dan mengkoordinasikan pengurusan dokumen transportasi dan kepabeanan. Mengelola pengiriman
+            barang melalui berbagai moda transportasi, memastikan kepatuhan dokumen ekspor-impor, serta
+            berkoordinasi dengan Bea Cukai dan otoritas pelabuhan. Berjalan paralel dengan jabatan lainnya
+            di periode yang sama, menunjukkan kemampuan multitasking yang tinggi.
+          </div>
+          <div class="career-tags">
+            <span class="tag">JPT / EMKL</span><span class="tag">Kepabeanan</span>
+            <span class="tag">Ekspor-Impor</span><span class="tag">Dokumentasi</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="career-item">
+        <div class="career-dot"></div>
+        <div class="career-card-inner">
+          <div class="career-ico">🚢</div>
+          <div class="career-header">
+            <div>
+              <div class="career-role">Operasional Shipping</div>
+              <div class="career-company">Perusahaan Pelayaran · Sulawesi Utara</div>
+            </div>
+            <div class="career-period-badge">2011 — 2017</div>
+          </div>
+          <div class="career-desc">
+            Memulai karir profesional di industri pelayaran sebagai staf operasional. Mengelola jadwal
+            kedatangan dan keberangkatan kapal, koordinasi dengan agen pelabuhan, pengurusan dokumen
+            manifes, serta pemantauan muatan. Mendapatkan pemahaman mendalam tentang industri maritim
+            dan operasional kepelabuhanan di Sulawesi Utara selama 6 tahun.
+          </div>
+          <div class="career-tags">
+            <span class="tag">Pelayaran</span><span class="tag">Shipping</span>
+            <span class="tag">Maritim</span><span class="tag">Operasional</span><span class="tag">Pelabuhan</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== EDUCATION =================== -->
+<section id="education">
+  <div class="section-inner">
+    <div class="section-label">02 — Education</div>
+    <h2 class="section-title reveal">Riwayat <em>Pendidikan</em></h2>
+    <div class="edu-grid">
+
+      <div class="edu-card">
+        <span class="edu-icon">🎓</span>
+        <div class="edu-period">Perguruan Tinggi (S1)</div>
+        <div class="edu-degree">Sarjana Akuntansi</div>
+        <div class="edu-school">Universitas di Bitung · Sulawesi Utara</div>
+        <div class="edu-desc">
+          Menyelesaikan studi S1 Akuntansi yang memberikan fondasi kuat di bidang
+          akuntansi keuangan, perpajakan, manajemen biaya, dan audit. Ilmu ini
+          menjadi landasan utama karir profesional di bidang keuangan saat ini.
+        </div>
+      </div>
+
+      <div class="edu-card">
+        <span class="edu-icon">🔧</span>
+        <div class="edu-period">Sekolah Menengah Kejuruan</div>
+        <div class="edu-degree">SMK · Teknik Mesin</div>
+        <div class="edu-school">SMK · Sulawesi Utara</div>
+        <div class="edu-desc">
+          Menempuh pendidikan kejuruan jurusan Teknik Mesin. Melaksanakan program
+          magang (PKL) di perusahaan <strong style="color:var(--white)">atap seng</strong>
+          — menerapkan ilmu teknik mesin secara langsung dalam lingkungan industri
+          produksi manufaktur.
+        </div>
+      </div>
+
+      <div class="edu-card">
+        <span class="edu-icon">📚</span>
+        <div class="edu-period">Pendidikan Dasar</div>
+        <div class="edu-degree">SD &amp; SMP</div>
+        <div class="edu-school">Sulawesi Utara · Indonesia</div>
+        <div class="edu-desc">
+          Menempuh jenjang pendidikan dasar dan menengah pertama di Sulawesi Utara.
+          Membangun karakter disiplin, rasa ingin tahu tinggi, dan pondasi akademik
+          yang solid sebagai bekal di jenjang pendidikan selanjutnya.
+        </div>
+      </div>
+
+      <div class="edu-card">
+        <span class="edu-icon">📜</span>
+        <div class="edu-period">Ongoing · Self-Development</div>
+        <div class="edu-degree">Kursus &amp; Belajar Mandiri</div>
+        <div class="edu-school">Platform Online · Komunitas</div>
+        <div class="edu-desc">
+          Aktif mengembangkan diri melalui kursus online di bidang trading (forex, crypto,
+          saham), teknologi, fotografi &amp; videografi, serta bisnis digital. Belajar dari
+          komunitas dan webinar secara konsisten.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== INTERESTS =================== -->
+<section id="interests">
+  <div class="section-inner">
+    <div class="section-label">03 — Interests</div>
+    <h2 class="section-title reveal">Minat &amp; <em>Passion</em></h2>
+    <div class="interests-grid">
+      <div class="interest-item">
+        <span class="interest-icon">📷</span>
+        <div class="interest-name">Photography</div>
+        <div class="interest-sub">Menangkap momen &amp; estetika visual</div>
+      </div>
+      <div class="interest-item">
+        <span class="interest-icon">🎬</span>
+        <div class="interest-name">Videography</div>
+        <div class="interest-sub">Produksi konten &amp; sinematografi</div>
+      </div>
+      <div class="interest-item">
+        <span class="interest-icon">🏍️</span>
+        <div class="interest-name">Riding / Touring</div>
+        <div class="interest-sub">Jelajahi jalur &amp; petualangan motor</div>
+      </div>
+      <div class="interest-item">
+        <span class="interest-icon">🚗</span>
+        <div class="interest-name">Automotive</div>
+        <div class="interest-sub">Car &amp; bike enthusiast</div>
+      </div>
+      <div class="interest-item">
+        <span class="interest-icon">📈</span>
+        <div class="interest-name">Trading</div>
+        <div class="interest-sub">Crypto · Forex · Saham</div>
+      </div>
+      <div class="interest-item">
+        <span class="interest-icon">💡</span>
+        <div class="interest-name">Ekonomi &amp; Bisnis</div>
+        <div class="interest-sub">Makro ekonomi &amp; strategi bisnis</div>
+      </div>
+      <div class="interest-item">
+        <span class="interest-icon">🌐</span>
+        <div class="interest-name">Politik &amp; Sosial</div>
+        <div class="interest-sub">Kebijakan &amp; dinamika masyarakat</div>
+      </div>
+      <div class="interest-item">
+        <span class="interest-icon">💻</span>
+        <div class="interest-name">Teknologi &amp; IT</div>
+        <div class="interest-sub">Inovasi digital &amp; dunia tech</div>
+      </div>
+      <div class="interest-item">
+        <span class="interest-icon">🔬</span>
+        <div class="interest-name">Sains</div>
+        <div class="interest-sub">Ilmu pengetahuan &amp; riset</div>
+      </div>
+      <div class="interest-item">
+        <span class="interest-icon">🏥</span>
+        <div class="interest-name">Kesehatan</div>
+        <div class="interest-sub">Gaya hidup sehat &amp; medis</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== SPORTS =================== -->
+<section id="sports">
+  <div class="section-inner">
+    <div class="section-label">04 — Sports</div>
+    <h2 class="section-title reveal">Olahraga &amp; <em>Hobi</em></h2>
+    <div class="sports-grid">
+      <div class="sport-card">
+        <span class="sport-emoji">🏸</span>
+        <div class="sport-name">Badminton</div>
+        <div class="sport-cat">Olahraga Aktif</div>
+        <div class="sport-bar-wrap"><div class="sport-bar" data-width="85"></div></div>
+        <div class="sport-pct">85% — Kompetitif</div>
+      </div>
+      <div class="sport-card">
+        <span class="sport-emoji">🏃</span>
+        <div class="sport-name">Running</div>
+        <div class="sport-cat">Olahraga Aktif</div>
+        <div class="sport-bar-wrap"><div class="sport-bar" data-width="70"></div></div>
+        <div class="sport-pct">70% — Rutin</div>
+      </div>
+      <div class="sport-card">
+        <span class="sport-emoji">♟️</span>
+        <div class="sport-name">Chess</div>
+        <div class="sport-cat">Mind Sport</div>
+        <div class="sport-bar-wrap"><div class="sport-bar" data-width="78"></div></div>
+        <div class="sport-pct">78% — Strategis</div>
+      </div>
+      <div class="sport-card">
+        <span class="sport-emoji">🔫</span>
+        <div class="sport-name">PUBG Mobile</div>
+        <div class="sport-cat">Mobile Gaming</div>
+        <div class="sport-bar-wrap"><div class="sport-bar" data-width="82"></div></div>
+        <div class="sport-pct">82% — Active Player</div>
+      </div>
+      <div class="sport-card">
+        <span class="sport-emoji">⚔️</span>
+        <div class="sport-name">Mobile Legends</div>
+        <div class="sport-cat">Mobile Gaming</div>
+        <div class="sport-bar-wrap"><div class="sport-bar" data-width="80"></div></div>
+        <div class="sport-pct">80% — Active Player</div>
+      </div>
+      <div class="sport-card">
+        <span class="sport-emoji">🕹️</span>
+        <div class="sport-name">Mobile &amp; PC Games</div>
+        <div class="sport-cat">Gaming Lainnya</div>
+        <div class="sport-bar-wrap"><div class="sport-bar" data-width="75"></div></div>
+        <div class="sport-pct">75% — Casual to Hardcore</div>
+      </div>
+      <div class="sport-card">
+        <span class="sport-emoji">🏍️</span>
+        <div class="sport-name">Race Bike</div>
+        <div class="sport-cat">Motorsport</div>
+        <div class="sport-bar-wrap"><div class="sport-bar" data-width="83"></div></div>
+        <div class="sport-pct">83% — Enthusiast</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== PETS =================== -->
+<section id="pets">
+  <div class="section-inner">
+    <div class="section-label">05 — Pets</div>
+    <h2 class="section-title reveal">Sahabat <em>Berbulu</em></h2>
+    <div class="pets-layout">
+      <div class="pets-visual reveal-scale">
+        <span class="pets-big-icon">🐱</span>
+        <div class="pets-name">Cats</div>
+        <div class="pets-sub">Loyal companion · Always around</div>
+      </div>
+      <div class="pets-text reveal-right">
+        <h3>// MY CATS</h3>
+        <div class="pet-trait">
+          <div class="pet-trait-icon">💙</div>
+          <div>
+            <div class="pet-trait-title">Teman Setia</div>
+            <div class="pet-trait-desc">Kucing adalah sahabat terbaik di rumah — selalu hadir menemani di setiap momen, baik saat santai maupun saat sibuk bekerja.</div>
+          </div>
+        </div>
+        <div class="pet-trait">
+          <div class="pet-trait-icon">🎮</div>
+          <div>
+            <div class="pet-trait-title">Gaming Partner</div>
+            <div class="pet-trait-desc">Sering menemani saat sesi PUBG atau ML panjang — kadang malah ikut "membantu" naik ke keyboard di momen paling tidak tepat.</div>
+          </div>
+        </div>
+        <div class="pet-trait">
+          <div class="pet-trait-icon">📷</div>
+          <div>
+            <div class="pet-trait-title">Model Fotografi</div>
+            <div class="pet-trait-desc">Dengan hobi photography dan videography, kucing-kucing ini sering menjadi subjek foto yang paling ekspresif dan menggemaskan.</div>
+          </div>
+        </div>
+        <div class="pet-trait">
+          <div class="pet-trait-icon">🌙</div>
+          <div>
+            <div class="pet-trait-title">Penghilang Stres</div>
+            <div class="pet-trait-desc">Setelah hari panjang di kantor mengurus Account Payable, bermain dengan kucing adalah terapi terbaik yang ada.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== COMMUNITY =================== -->
+<section id="community">
+  <div class="section-inner">
+    <div class="section-label">06 — Community</div>
+    <h2 class="section-title reveal">Komunitas &amp; <em>Network</em></h2>
+    <div class="community-grid">
+      <div class="community-card">
+        <span class="comm-icon">🤖</span>
+        <div class="comm-name">Android Community</div>
+        <div class="comm-type">Technology</div>
+        <div class="comm-desc">Komunitas pengguna dan pecinta Android. Berbagi tips, custom ROM, aplikasi terbaru, dan diskusi seputar ekosistem Android dan teknologi mobile terkini.</div>
+        <span class="comm-badge">Tech · Mobile</span>
+      </div>
+      <div class="community-card">
+        <span class="comm-icon">🏍️</span>
+        <div class="comm-name">Bike Community</div>
+        <div class="comm-type">Automotive</div>
+        <div class="comm-desc">Komunitas pecinta motor — touring bersama, info otomotif, tips perawatan, dan menjelajahi rute-rute indah di Sulawesi Utara bersama para rider.</div>
+        <span class="comm-badge">Automotive · Riding</span>
+      </div>
+      <div class="community-card">
+        <span class="comm-icon">📱</span>
+        <div class="comm-name">Social Media Community</div>
+        <div class="comm-type">Technology</div>
+        <div class="comm-desc">Aktif di berbagai platform media sosial sebagai kreator dan kurator konten. Membangun jaringan digital dan berbagi insights di era media sosial.</div>
+        <span class="comm-badge">Tech · Digital</span>
+      </div>
+      <div class="community-card">
+        <span class="comm-icon">🎮</span>
+        <div class="comm-name">Game Community</div>
+        <div class="comm-type">Technology · Gaming</div>
+        <div class="comm-desc">Komunitas gamer aktif di PUBG Mobile, Mobile Legends, dan berbagai game lainnya. Bermain bersama, turnamen komunitas, dan diskusi strategi game.</div>
+        <span class="comm-badge">Gaming · Esports</span>
+      </div>
+      <div class="community-card">
+        <span class="comm-icon">💹</span>
+        <div class="comm-name">Forex Community</div>
+        <div class="comm-type">Technology · Finance</div>
+        <div class="comm-desc">Komunitas trader forex, crypto, dan saham. Berbagi analisis pasar, strategi trading, sinyal, dan edukasi keuangan bersama sesama trader aktif.</div>
+        <span class="comm-badge">Finance · Trading</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== CONTACT =================== -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">07 — Contact</div>
+    <h2 class="section-title reveal">Hubungi <em>Saya</em></h2>
+    <div class="contact-layout">
+      <div>
+        <div class="contact-info">
+          <h3>// REACH OUT</h3>
+          <a class="contact-item" href="mailto:indra.nasution@email.com">
+            <div class="contact-icon">✉</div>
+            <div>
+              <span class="contact-item-type">Email</span>
+              <span class="contact-item-label">indra.nasution@email.com</span>
+            </div>
+          </a>
+          <a class="contact-item" href="#">
+            <div class="contact-icon">📞</div>
+            <div>
+              <span class="contact-item-type">WhatsApp / Phone</span>
+              <span class="contact-item-label">+62 xxx-xxxx-xxxx</span>
+            </div>
+          </a>
+          <a class="contact-item" href="#">
+            <div class="contact-icon">📍</div>
+            <div>
+              <span class="contact-item-type">Lokasi</span>
+              <span class="contact-item-label">Manado, Sulawesi Utara, Indonesia</span>
+            </div>
+          </a>
+          <a class="contact-item" href="#">
+            <div class="contact-icon">💼</div>
+            <div>
+              <span class="contact-item-type">LinkedIn</span>
+              <span class="contact-item-label">linkedin.com/in/indranasution</span>
+            </div>
+          </a>
+          <a class="contact-item" href="#">
+            <div class="contact-icon">📸</div>
+            <div>
+              <span class="contact-item-type">Instagram</span>
+              <span class="contact-item-label">@indranasution</span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="contact-form">
+          <div class="form-group">
+            <label class="form-label">Nama Anda</label>
+            <input type="text" class="form-input" placeholder="Masukkan nama Anda">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Alamat Email</label>
+            <input type="email" class="form-input" placeholder="email@domain.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subjek</label>
+            <input type="text" class="form-input" placeholder="Tentang apa?">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Pesan</label>
+            <textarea class="form-input" placeholder="Tulis pesan Anda di sini..."></textarea>
+          </div>
+          <button class="form-submit" id="submitBtn">Kirim Pesan →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">INDRA NASUTION</div>
+  <div class="footer-copy">© 2025 · Manado, Sulawesi Utara · All Rights Reserved</div>
+</footer>
+
+<script>
+// Progress bar
+const prog=document.getElementById('progress');
+window.addEventListener('scroll',()=>{
+  const s=document.documentElement.scrollTop;
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  prog.style.width=(s/h*100)+'%';
+  document.querySelector('nav').style.background=s>60?'rgba(0,0,0,0.97)':'rgba(0,0,0,0.85)';
+});
+
+// Intersection Observer — reveal + sport bars
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      e.target.querySelectorAll('.sport-bar').forEach(b=>{
+        setTimeout(()=>{b.style.width=b.dataset.width+'%'},200);
+      });
+    }
+  });
+},{threshold:0.12});
+
+document.querySelectorAll(
+  '.reveal,.reveal-left,.reveal-right,.reveal-scale,.career-item,.edu-card,.interest-item,.sport-card,.community-card,.contact-item'
+).forEach(el=>io.observe(el));
+
+// Stagger delays
+[
+  ['.career-item',0.12],['.edu-card',0.1],['.interest-item',0.07],
+  ['.sport-card',0.08],['.community-card',0.1],['.contact-item',0.1]
+].forEach(([sel,d])=>document.querySelectorAll(sel).forEach((el,i)=>el.style.transitionDelay=i*d+'s'));
+
+// Particles
+const hero=document.getElementById('hero');
+for(let i=0;i<18;i++){
+  const p=document.createElement('div');
+  p.className='particle';
+  p.style.cssText=`left:${Math.random()*100}%;animation-duration:${5+Math.random()*8}s;animation-delay:${Math.random()*7}s`;
+  hero.appendChild(p);
+}
+
+// Submit
+document.getElementById('submitBtn').addEventListener('click',function(){
+  const o=this.textContent;
+  this.textContent='Pesan Terkirim ✓';
+  this.style.cssText='color:#4fc3f7;border-color:#4fc3f7';
+  setTimeout(()=>{this.textContent=o;this.style.cssText=''},3000);
+});
+</script>
+</body>
+</html>

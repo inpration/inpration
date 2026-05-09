@@ -65,12 +65,12 @@ section{min-height:100vh;display:flex;align-items:center;position:relative;overf
 
 .hero-layout{position:relative;z-index:2;display:grid;grid-template-columns:220px 1fr;gap:4rem;align-items:center;max-width:1100px;width:100%}
 .hero-avatar-col{display:flex;flex-direction:column;align-items:center;gap:1.5rem}
-.avatar-frame{width:200px;height:200px;position:relative;border:1px solid rgba(79,195,247,0.25);padding:6px;animation:avatarPulse 4s ease-in-out infinite}
+.avatar-frame{width:260px;height:260px;position:relative;border:1px solid rgba(79,195,247,0.25);padding:6px;animation:avatarPulse 4s ease-in-out infinite}
 @keyframes avatarPulse{0%,100%{box-shadow:0 0 0 0 rgba(79,195,247,0)}50%{box-shadow:0 0 30px 6px rgba(79,195,247,0.08)}}
 .avatar-inner{width:100%;height:100%;background:linear-gradient(135deg,var(--dark3) 0%,var(--gray) 100%);display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace;font-size:4rem;font-weight:900;color:var(--accent);letter-spacing:-0.05em;position:relative;overflow:hidden}
 .avatar-inner::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent 0deg,rgba(79,195,247,0.1) 60deg,transparent 120deg);animation:rotate 8s linear infinite}
-.avatar-img{width:100%;height:100%;object-fit:cover;position:relative;z-index:2;filter:brightness(0.95)contrast(1.08)saturate(0.9);transition:transform .4s ease;}
-.avatar-inner:hover .avatar-img{transform:scale(1.03);}
+.avatar-img{width:100%;height:100%;object-fit:cover;object-position:center top;transform:scale(1.35);position:relative;z-index:2;filter:brightness(0.9)contrast(1.12)saturate(0.9);transition:transform .4s ease;}
+.avatar-inner:hover .avatar-img{transform:scale(1.42);}
 @keyframes rotate{to{transform:rotate(360deg)}}
 .avatar-corner{position:absolute;width:12px;height:12px;border-color:var(--accent);border-style:solid}
 .avatar-corner.tl{top:-1px;left:-1px;border-width:2px 0 0 2px}

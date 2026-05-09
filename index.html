@@ -159,6 +159,15 @@ section{min-height:100vh;display:flex;align-items:center;position:relative;overf
 .sport-bar{height:100%;background:linear-gradient(90deg,var(--accent),rgba(79,195,247,0.25));width:0%;transition:width 1.3s ease}
 .sport-pct{font-family:'Orbitron',monospace;font-size:0.55rem;color:var(--steel);letter-spacing:0.1em}
 
+/* ===================== APPS ===================== */
+#apps{background:var(--dark2);}
+.apps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;}
+.app-card{background:var(--glass);border:1px solid var(--glass-border);padding:1.6rem;position:relative;overflow:hidden;transition:all .35s ease;}
+.app-card:hover{border-color:rgba(79,195,247,0.25);background:rgba(255,255,255,0.05);transform:translateY(-4px);}
+.app-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(79,195,247,.25),transparent);}
+.app-category{font-family:'Orbitron',monospace;font-size:.68rem;letter-spacing:.18em;color:var(--accent);margin-bottom:1rem;text-transform:uppercase;}
+.app-items{display:flex;flex-wrap:wrap;gap:.55rem;}
+.app-items span{font-size:.7rem;letter-spacing:.08em;padding:.45rem .8rem;border:1px solid var(--gray2);color:var(--silver);background:rgba(255,255,255,.03);}
 /* ===================== PETS ===================== */
 #pets{background:var(--dark)}
 .pets-layout{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
@@ -244,6 +253,7 @@ footer{padding:2.5rem 3.5rem;background:#000;border-top:1px solid var(--glass-bo
     <li><a href="#education">Education</a></li>
     <li><a href="#interests">Interests</a></li>
     <li><a href="#sports">Sports</a></li>
+    <li><a href="#apps">Apps</a></li>
     <li><a href="#pets">Pets</a></li>
     <li><a href="#community">Community</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -446,7 +456,7 @@ footer{padding:2.5rem 3.5rem;background:#000;border-top:1px solid var(--glass-bo
         <span class="edu-icon">🎓</span>
         <div class="edu-period">Perguruan Tinggi (S1)</div>
         <div class="edu-degree">Sarjana Akuntansi</div>
-        <div class="edu-school">Universitas di Bitung · Sulawesi Utara</div>
+        <div class="edu-school">STIE di Bitung · Sulawesi Utara</div>
         <div class="edu-desc">
           Menyelesaikan studi S1 Akuntansi yang memberikan fondasi kuat di bidang
           akuntansi keuangan, perpajakan, manajemen biaya, dan audit. Ilmu ini
@@ -461,7 +471,7 @@ footer{padding:2.5rem 3.5rem;background:#000;border-top:1px solid var(--glass-bo
         <div class="edu-school">SMK · Sulawesi Utara</div>
         <div class="edu-desc">
           Menempuh pendidikan kejuruan jurusan Teknik Mesin. Melaksanakan program
-          magang (PKL) di perusahaan <strong style="color:var(--white)">atap seng</strong>
+          magang (PKL) di perusahaan <strong style="color:var(--white)">Produsen Baja Galvanis</strong>
           — menerapkan ilmu teknik mesin secara langsung dalam lingkungan industri
           produksi manufaktur.
         </div>
@@ -471,9 +481,9 @@ footer{padding:2.5rem 3.5rem;background:#000;border-top:1px solid var(--glass-bo
         <span class="edu-icon">📚</span>
         <div class="edu-period">Pendidikan Dasar</div>
         <div class="edu-degree">SD &amp; SMP</div>
-        <div class="edu-school">Sulawesi Utara · Indonesia</div>
+        <div class="edu-school">Bitung Sulawesi Utara · Indonesia</div>
         <div class="edu-desc">
-          Menempuh jenjang pendidikan dasar dan menengah pertama di Sulawesi Utara.
+          Menempuh jenjang pendidikan dasar dan menengah pertama di Kota Bitung, Sulawesi Utara.
           Membangun karakter disiplin, rasa ingin tahu tinggi, dan pondasi akademik
           yang solid sebagai bekal di jenjang pendidikan selanjutnya.
         </div>
@@ -551,6 +561,16 @@ footer{padding:2.5rem 3.5rem;background:#000;border-top:1px solid var(--glass-bo
         <div class="interest-name">Kesehatan</div>
         <div class="interest-sub">Gaya hidup sehat &amp; medis</div>
       </div>
+      <div class="interest-item">
+      <span class="interest-icon">🎬</span>
+      <div class="interest-name">Movie</div>
+      <div class="interest-sub">Film, sinematografi & storytelling</div>
+      </div>
+      <div class="interest-item">
+        <span class="interest-icon">☕</span>
+        <div class="interest-name">Coffee</div>
+        <div class="interest-sub">Coffee culture & relaxing moments</div>
+      </div>
     </div>
   </div>
 </section>
@@ -566,7 +586,7 @@ footer{padding:2.5rem 3.5rem;background:#000;border-top:1px solid var(--glass-bo
         <div class="sport-name">Badminton</div>
         <div class="sport-cat">Olahraga Aktif</div>
         <div class="sport-bar-wrap"><div class="sport-bar" data-width="85"></div></div>
-        <div class="sport-pct">85% — Kompetitif</div>
+        <div class="sport-pct">75% — Rutin</div>
       </div>
       <div class="sport-card">
         <span class="sport-emoji">🏃</span>
@@ -580,40 +600,103 @@ footer{padding:2.5rem 3.5rem;background:#000;border-top:1px solid var(--glass-bo
         <div class="sport-name">Chess</div>
         <div class="sport-cat">Mind Sport</div>
         <div class="sport-bar-wrap"><div class="sport-bar" data-width="78"></div></div>
-        <div class="sport-pct">78% — Strategis</div>
+        <div class="sport-pct">65% — Strategis</div>
       </div>
       <div class="sport-card">
         <span class="sport-emoji">🔫</span>
         <div class="sport-name">PUBG Mobile</div>
         <div class="sport-cat">Mobile Gaming</div>
         <div class="sport-bar-wrap"><div class="sport-bar" data-width="82"></div></div>
-        <div class="sport-pct">82% — Active Player</div>
+        <div class="sport-pct">80% — Active Player</div>
       </div>
       <div class="sport-card">
         <span class="sport-emoji">⚔️</span>
         <div class="sport-name">Mobile Legends</div>
         <div class="sport-cat">Mobile Gaming</div>
         <div class="sport-bar-wrap"><div class="sport-bar" data-width="80"></div></div>
-        <div class="sport-pct">80% — Active Player</div>
+        <div class="sport-pct">70% — Active Player</div>
       </div>
       <div class="sport-card">
         <span class="sport-emoji">🕹️</span>
         <div class="sport-name">Mobile &amp; PC Games</div>
         <div class="sport-cat">Gaming Lainnya</div>
         <div class="sport-bar-wrap"><div class="sport-bar" data-width="75"></div></div>
-        <div class="sport-pct">75% — Casual to Hardcore</div>
+        <div class="sport-pct">60% — Casual to Hardcore</div>
       </div>
       <div class="sport-card">
         <span class="sport-emoji">🏍️</span>
         <div class="sport-name">Race Bike</div>
         <div class="sport-cat">Motorsport</div>
         <div class="sport-bar-wrap"><div class="sport-bar" data-width="83"></div></div>
-        <div class="sport-pct">83% — Enthusiast</div>
+        <div class="sport-pct">80% — Enthusiast</div>
       </div>
     </div>
   </div>
 </section>
+  
+/* ===================== APPS ===================== */
+<section id="apps">
+  <div class="section-inner">
 
+    <div class="section-label">04 — Digital Ecosystem</div>
+
+    <h2 class="section-title reveal">
+      Apps & <em>Platforms</em>
+    </h2>
+
+    <div class="apps-grid">
+
+      <!-- Productivity -->
+      <div class="app-card">
+        <div class="app-category">Productivity</div>
+        <div class="app-items">
+          <span>Excel</span>
+          <span>Word</span>
+          <span>PowerPoint</span>
+          <span>Google Sheet</span>
+        </div>
+      </div>
+
+      <!-- Creative -->
+      <div class="app-card">
+        <div class="app-category">Creative Tools</div>
+        <div class="app-items">
+          <span>Adobe Lightroom</span>
+          <span>Adobe Photoshop</span>
+          <span>CapCut</span>
+          <span>OBS Studio</span>
+          <span>Canva</span>
+          <span>TikTok Studio</span>
+        </div>
+      </div>
+
+      <!-- Social -->
+      <div class="app-card">
+        <div class="app-category">Social & Communication</div>
+        <div class="app-items">
+          <span>GitHub</span>
+          <span>Discord</span>
+          <span>Telegram</span>
+          <span>WhatsApp</span>
+          <span>Instagram</span>
+        </div>
+      </div>
+
+      <!-- Trading -->
+      <div class="app-card">
+        <div class="app-category">Trading & Investment</div>
+        <div class="app-items">
+          <span>MetaTrader</span>
+          <span>Stockbit</span>
+          <span>Binance</span>
+          <span>Bibit</span>
+          <span>TradingView</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>  
 <!-- =================== PETS =================== -->
 <section id="pets">
   <div class="section-inner">

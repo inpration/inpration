@@ -3,7 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Indra Nasution — Portfolio</title>
+<title>INPRATION — Personal Web</title>
+<meta name="description"
+content="INPRATION personal web with a modern cinematic interface, minimalist dark aesthetic, and futuristic visual experience.">
+
+<!-- SEO + OPEN GRAPH -->
+<meta name="theme-color" content="#05070b">
+
+<meta property="og:title"
+content="Indra Nasution — Portfolio">
+
+<meta property="og:description"
+content="Professional · Entrepreneur · Tech Enthusiast">
+
+<meta property="og:image"
+content="preview.jpg">
+
+<meta property="og:type"
+content="website">
+<meta property="og:url"
+content="https://inpration.github.io/REPO/">
+
+<meta name="twitter:card"
+content="summary_large_image">
+
+<meta name="twitter:title"
+content="Indra Nasution — Portfolio">
+
+<meta name="twitter:description"
+content="Professional · Entrepreneur · Tech Enthusiast">
+
+<meta name="twitter:image"
+content="preview.jpg">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -28,7 +63,7 @@ nav{
   position:fixed;top:0;left:0;right:0;z-index:1000;
   display:flex;align-items:center;justify-content:space-between;
   padding:1rem 4rem;
-  background:rgba(0,0,0,0.85);backdrop-filter:blur(24px);
+  background:rgba(0,0,0,0.85);backdrop-filter:blur(18px) saturate(180%);
   border-bottom:1px solid var(--glass-border);transition:background 0.3s;}
 .nav-logo{font-family:'Orbitron',monospace;font-size:0.9rem;font-weight:900;letter-spacing:0.3em;color:var(--accent);text-decoration:none;display:flex;align-items:center;min-width:180px;}
 .nav-logo-img{height:38px;width:auto;display:block;object-fit:contain;transform:scale(1.35);transform-origin:left center;filter:brightness(1.3)contrast(1.15)drop-shadow(0 0 12px rgba(79,195,247,0.38));transition:all .3s ease;}
@@ -92,7 +127,7 @@ section{min-height:100vh;display:flex;align-items:center;position:relative;overf
 .hero-greeting{font-family:'Orbitron',monospace;font-size:0.65rem;font-weight:400;letter-spacing:0.4em;color:var(--accent);text-transform:uppercase;margin-bottom:1rem}
 .hero-name{font-family:'Orbitron',monospace;font-size:clamp(2.5rem,6vw,5.5rem);font-weight:900;line-height:0.9;letter-spacing:-0.02em;margin-bottom:1.2rem}
 .hero-name span{display:block;color:transparent;-webkit-text-stroke:1px rgba(79,195,247,0.25);font-size:0.55em}
-.hero-name strong{display:block;background:linear-gradient(135deg,#f0f4f8 0%,#b0bec5 50%,#78909c 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-name strong{display:block;background:linear-gradient(135deg,#f0f4f8 0%,#b0bec5 50%,#78909c 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:0 0 12px rgba(79,195,247,0.12);}
 .hero-tagline{font-size:0.9rem;font-weight:600;color:var(--steel);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.5rem}
 .hero-intro{font-size:1rem;font-weight:400;color:var(--silver);max-width:520px;line-height:1.85;margin-bottom:2.5rem}
 .hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
@@ -237,6 +272,8 @@ footer{padding:2.5rem 3.5rem;background:#000;border-top:1px solid var(--glass-bo
 section,
 nav,
 footer{position:relative;z-index:1;}
+/* SMOOTH SECTION TRANSITION */
+section{transition:background 0.6s ease,transform 0.6s ease;}
 
 /* GLASS BLUR EFFECT */
 .hero-content,
@@ -249,7 +286,13 @@ footer{position:relative;z-index:1;}
   backdrop-filter:blur(14px);background:rgba(255,255,255,0.03);
   border:1px solid rgba(255,255,255,0.08);box-shadow:0 8px 32px rgba(0,0,0,0.28);
 }
-  
+/* FUTURISTIC HOVER GLOW */
+.edu-card:hover,
+.sport-card:hover,
+.community-card:hover,
+.app-card:hover,
+.career-card-inner:hover{box-shadow:0 0 30px rgba(79,195,247,0.08),0 0 60px rgba(79,195,247,0.03);}
+
 /* HEIGHT BALANCE */
 .edu-card,
 .sport-card,
@@ -262,7 +305,7 @@ footer{position:relative;z-index:1;}
   
 /* RESPONSIVE */
 
-@media(max-width:1201px) and (max-width:1400px){
+@media(min-width:1201px) and (max-width:1400px){
 nav{padding:1rem 2rem;}
   .nav-logo-img{height:34px;transform:scale(1.15);}
   .nav-links{gap:1rem;justify-content:center;}

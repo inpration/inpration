@@ -274,14 +274,14 @@ nav{padding:1rem 2rem;}
   .apps-grid{grid-template-columns:1fr;}
 
   /* NAVBAR */
-  nav{padding:0.7rem 1rem;flex-direction:column;gap:0.6rem;}
+  nav{padding:0.8rem 1rem;flex-direction:column;align-items:center;gap:0.8rem;}
   .nav-logo{min-width:auto;justify-content:center;}
   .nav-logo-img{height:28px;transform:none;}
 
   /* MENU */
-  .nav-links{justify-content:center;flex-wrap:wrap;gap:0.75rem 1rem;}
-  .nav-links a{font-size:0.52rem;letter-spacing:0.15em;}
-
+  .nav-links{display:flex;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;gap:1rem;width:100%;padding-bottom:0.3rem;scrollbar-width:none;}
+  .nav-links::-webkit-scrollbar{display:none;}
+   .nav-links li{flex:none;} 
   /* LANGUAGE */
   .lang-switch{display:flex;justify-content:center;gap:0.5rem;}
   .lang-btn{padding:0.35rem 0.7rem;font-size:0.55rem;}
@@ -315,7 +315,10 @@ nav{padding:1rem 2rem;}
   .pets-layout{grid-template-columns:1fr;}
 
   /* FOOTER */
-  footer{flex-direction:column;text-align:center;}
+  footer{
+    flex-direction:column;
+    text-align:center;
+  }
 </style>
 </head>
 <body>

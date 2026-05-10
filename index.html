@@ -232,9 +232,24 @@ footer{padding:2.5rem 3.5rem;background:#000;border-top:1px solid var(--glass-bo
 .footer-copy{font-size:0.7rem;letter-spacing:0.08em;color:var(--steel)}
 
 /* PARTICLES */
-.particle{position:absolute;width:2px;height:2px;background:var(--accent);border-radius:50%;opacity:0;animation:particleFloat linear infinite;pointer-events:none}
-@keyframes particleFloat{0%{opacity:0;transform:translateY(80px)}10%{opacity:0.5}90%{opacity:0.15}100%{opacity:0;transform:translateY(-180px)}}
+#particles-js{position:fixed;inset:0;width:100%;height:100%;z-index:0;background:#05070b;}
+/* CONTENT ABOVE PARTICLES */
+section,
+nav,
+footer{position:relative;z-index:1;}
 
+/* GLASS BLUR EFFECT */
+.hero-content,
+.career-card-inner,
+.edu-card,
+.sport-card,
+.community-card,
+.app-card,
+.contact-form{
+  backdrop-filter:blur(14px);background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.08);box-shadow:0 8px 32px rgba(0,0,0,0.28);
+}
+  
 /* HEIGHT BALANCE */
 .edu-card,
 .sport-card,
@@ -247,7 +262,7 @@ footer{padding:2.5rem 3.5rem;background:#000;border-top:1px solid var(--glass-bo
   
 /* RESPONSIVE */
 
-@media(max-width:1024px){
+@media(max-width:1201px) and (max-width:1400px){
 nav{padding:1rem 2rem;}
   .nav-logo-img{height:34px;transform:scale(1.15);}
   .nav-links{gap:1rem;justify-content:center;}
@@ -292,7 +307,7 @@ nav{padding:1rem 2rem;}
 
   /* HERO */
   #hero{
-    padding-top:14rem;
+    padding-top:11rem;
     padding-left:1.5rem;
     padding-right:1.5rem;}
   .hero-layout{grid-template-columns:1fr;gap:2rem;text-align:center;}
@@ -367,7 +382,7 @@ nav{padding:1rem 2rem;}
 </style>
 </head>
 <body>
-
+<div id="particles-js"></div>
 <div class="progress-bar" id="progress"></div>
 
 <nav>
@@ -1050,13 +1065,6 @@ document.querySelectorAll(
 ].forEach(([sel,d])=>document.querySelectorAll(sel).forEach((el,i)=>el.style.transitionDelay=i*d+'s'));
 
 // Particles
-const hero=document.getElementById('hero');
-for(let i=0;i<18;i++){
-  const p=document.createElement('div');
-  p.className='particle';
-  p.style.cssText=`left:${Math.random()*100}%;animation-duration:${5+Math.random()*8}s;animation-delay:${Math.random()*7}s`;
-  hero.appendChild(p);
-}
 
 // Submit
 document.getElementById('submitBtn').addEventListener('click',function(){
@@ -1093,5 +1101,68 @@ localStorage.getItem('language') || 'id';
 setLanguage(savedLang);
 
 </script> 
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+<script>
+
+particlesJS("particles-js", {
+
+  particles: {
+
+    number: {
+      value: 45
+    },
+
+    color: {
+      value: "#4fc3f7"
+    },
+
+    shape: {
+      type: "circle"
+    },
+
+    opacity: {
+      value: 0.18
+    },
+
+    size: {
+      value: 2
+    },
+
+    line_linked: {
+      enable: true,
+      distance: 140,
+      color: "#4fc3f7",
+      opacity: 0.12,
+      width: 1
+    },
+
+    move: {
+      enable: true,
+      speed: 0.7
+    }
+
+  },
+
+  interactivity: {
+
+    detect_on: "canvas",
+
+    events: {
+
+      onhover: {
+        enable: true,
+        mode: "grab"
+      }
+
+    }
+
+  },
+
+  retina_detect: true
+
+});
+
+</script>
 </body>
 </html>

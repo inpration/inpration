@@ -320,6 +320,35 @@ nav{padding:1rem 2rem;}
     flex-direction:column;
     text-align:center;
   }
+}
+
+/* TABLET */
+@media (min-width:769px) and (max-width:1024px){
+
+  /* NAVBAR */
+  nav{padding:1rem 1.5rem;gap:1rem;}
+  .nav-logo-img{height:34px;}
+  .nav-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;}
+  .nav-links a{font-size:0.58rem;letter-spacing:0.12em;}
+  .lang-switch{margin-top:0.3rem;}
+
+  /* HERO */
+  #hero{
+    padding-top:10rem;
+    padding-left:2rem;
+    padding-right:2rem;}
+.hero-layout{grid-template-columns:1fr 1fr;gap:2rem;align-items:center;}
+.avatar-frame{width:270px;height:360px;margin:auto;}
+.hero-title{font-size:clamp(4rem,7vw,6rem);}
+.hero-desc{font-size:1rem;line-height:1.9;}
+.hero-cta{flex-wrap:wrap;gap:1rem;}
+
+  /* GRID CARD */
+  .sports-grid,
+  .community-grid,
+  .apps-grid,
+  .edu-grid{grid-template-columns:repeat(2,1fr);}}
+  
 </style>
 </head>
 <body>

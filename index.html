@@ -243,6 +243,25 @@ footer{padding:2.5rem 3.5rem;background:#000;border-top:1px solid var(--glass-bo
 }
   
 /* RESPONSIVE */
+
+@media(max-width:1024px){
+nav{padding:1rem 2rem;}
+  .nav-logo-img{height:34px;transform:scale(1.15);}
+  .nav-links{gap:1rem;justify-content:center;}
+  .nav-links a{font-size:0.58rem;letter-spacing:0.16em;}
+  #hero{padding-top:10rem;padding-left:2rem;padding-right:2rem;}
+  .hero-layout{grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center;}
+  .avatar-frame{width:240px;height:320px;}
+  .hero-title{font-size:clamp(4rem,7vw,6rem);}
+  .hero-desc{font-size:1rem;line-height:1.8;}
+  .hero-cta{flex-wrap:wrap;}
+  .section-inner{padding:7rem 2rem 5rem;}
+  .sports-grid,
+  .community-grid,
+  .apps-grid,
+  .edu-grid{grid-template-columns:repeat(2,1fr);gap:1.5rem;}
+  .contact-layout{grid-template-columns:1fr;gap:3rem;}}
+
 @media(max-width:768px){
   .edu-grid,
   .sports-grid,
@@ -257,7 +276,8 @@ footer{padding:2.5rem 3.5rem;background:#000;border-top:1px solid var(--glass-bo
   .avatar-frame{width:150px;height:150px}.avatar-inner{font-size:3rem}
   .contact-layout,.pets-layout{grid-template-columns:1fr}
   footer{flex-direction:column;text-align:center}
-/* MOBILE NAV */
+  
+  /* MOBILE NAV */
   nav{padding:0.7rem 1rem;flex-direction:column;gap:0.6rem;}
   .nav-logo{min-width:auto;justify-content:center;}
   .nav-logo-img{height:28px;transform:scale(1.1);}

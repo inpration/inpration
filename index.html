@@ -302,6 +302,31 @@ section{transition:background 0.6s ease,transform 0.6s ease;}
   flex-direction:column;
   justify-content:space-between;
 }
+
+/* NEW HERO */
+#hero{min-height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;}
+.hero-overlay{position:absolute;inset:0;background:radial-gradient(circle at center,rgba(79,195,247,0.08),transparent 65%);}
+.hero-center{position:relative;z-index:2;}
+.hero-top-text{font-size:0.7rem;letter-spacing:0.35em;color:var(--steel);margin-bottom:2rem;font-family:'Orbitron',sans-serif;}
+.hero-name{line-height:0.9;}
+.hero-name span{display:block;font-size:clamp(3rem,8vw,7rem);color:transparent;-webkit-text-stroke:1px rgba(255,255,255,0.3);}
+.hero-name strong{display:block;font-size:clamp(4rem,10vw,9rem);color:#fff;text-shadow:0 0 18px rgba(79,195,247,0.15);}
+.hero-role{margin-top:1.5rem;font-size:0.85rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--silver);margin-bottom:2.5rem;}
+.hero-buttons{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;}
+.scroll-indicator{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);font-size:0.6rem;letter-spacing:0.35em;color:var(--steel);}
+
+/* ABOUT */
+#about{padding:8rem 0;}
+.about-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.about-image-frame{border:1px solid rgba(255,255,255,0.08);padding:1rem;background:rgba(255,255,255,0.03);backdrop-filter:blur(14px);}
+.about-image{width:100%;display:block;}
+.about-title{font-size:clamp(2.5rem,5vw,5rem);line-height:1;margin-bottom:2rem;}
+.about-title span{color:transparent;-webkit-text-stroke:1px rgba(79,195,247,0.45);}
+.about-desc{color:var(--silver);line-height:2;margin-bottom:1.5rem;}
+@media(max-width:768px){.about-layout{grid-template-columns:1fr;}
+.about-title,
+.about-desc{text-align:center;}
+}
   
 /* RESPONSIVE */
 
@@ -452,56 +477,51 @@ nav{padding:1rem 2rem;}
 
 <!-- =================== HOME =================== -->
 <section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-scan"></div>
+<div class="hero-overlay"></div>
+<div class="hero-center">
+<div class="hero-top-text">PORTFOLIO — 2026</div>
+<h1 class="hero-name"><span>INDRA</span><strong>NASUTION</strong></h1>
+<div class="hero-role">Professional · Entrepreneur · Tech Enthusiast</div>
+<div class="hero-buttons">
+<a href="#about" class="btn-primary">Explore Profile</a>
+<a href="#contact" class="btn-ghost">Contact Me</a></div>
+</div>
+<div class="scroll-indicator">SCROLL</div>
+</section>
+<!-- =================== ABOUT =================== -->
+<section id="about">
+<div class="section-inner">
+<div class="section-label">01 — ABOUT</div>
+<div class="about-layout">
+<div class="about-image-wrap">
+<div class="about-image-frame"><img src="avatar.jpg"alt="Indra Nasution"class="about-image"></div>
+</div>
+<div class="about-content"><h2 class="about-title">HELLO,<br>I'M <span>INDRA.</span></h2>
+        <p class="about-desc">
 
-  <div class="section-inner" style="display:flex;align-items:center">
-    <div class="hero-layout">
+          Seorang profesional berpengalaman di bidang
+          keuangan dan operasional dengan rekam jejak
+          yang kaya — mulai dari industri pelayaran,
+          jasa transportasi, wirausaha mandiri,
+          hingga kini berkiprah di perusahaan retail nasional.
 
-      <div class="hero-avatar-col">
-        <div class="avatar-frame">
-          <div class="avatar-inner">
-            <img src="avatar.jpg" alt="Indra Nasution" class="avatar-img">
-            <div class="avatar-corner tl"></div>
-            <div class="avatar-corner tr"></div>
-            <div class="avatar-corner bl"></div>
-            <div class="avatar-corner br"></div>
-          </div>
-        </div>
-        <div class="avatar-status">
-          <div class="status-dot"></div>
-          <span>Available</span>
-        </div>
-      </div>
-
-      <div class="hero-content">
-        <div class="hero-greeting">// Halo, Selamat Datang!</div>
-        <h1 class="hero-name">
-          <span>Indra</span>
-          <strong>Nasution</strong>
-        </h1>
-        <p class="hero-tagline">Profesional · Entrepreneur · Enthusiast</p>
-        <p class="hero-intro">
-          Seorang profesional berpengalaman di bidang keuangan dan operasional dengan rekam jejak
-          yang kaya — mulai dari industri pelayaran, jasa transportasi, wirausaha mandiri, hingga
-          kini berkiprah di perusahaan ritel nasional sebagai Account Payable. Berbasis di Manado,
-          Sulawesi Utara, dengan semangat belajar dan jiwa kewirausahaan yang tinggi.
         </p>
-        <div class="hero-cta">
-          <a href="#career" class="btn-primary">Lihat Karir Saya</a>
-          <a href="#contact" class="btn-ghost">Hubungi Saya</a>
-        </div>
-      </div>
 
+        <p class="about-desc">
+
+          Berbasis di Manado, Sulawesi Utara,
+          dengan semangat belajar tinggi,
+          ketertarikan pada teknologi,
+          desain futuristik,
+          dan pengembangan digital modern.
+
+        </p>
     </div>
   </div>
+</div>
 
-  <div class="scroll-hint">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
 </section>
+  
 
 <!-- =================== CAREER =================== -->
 <section id="career">

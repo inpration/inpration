@@ -323,31 +323,36 @@ nav{padding:1rem 2rem;}
 }
 
 /* TABLET */
-@media (min-width:821px) and (max-width:1024px){
+@media (min-width:821px) and (max-width:1200px){
 
   /* NAVBAR */
- nav{padding:1rem 1.5rem;gap:1rem;}
- .nav-logo-img{height:34px;}
- .nav-links{display:flex;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;align-items:center;gap:1rem;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
- .nav-links::-webkit-scrollbar{display:none;}
- .nav-links a{font-size:0.58rem;letter-spacing:0.12em;white-space:nowrap;}
- .lang-switch{margin-top:0.3rem;}
-  /* HERO */
-   #hero{
-    padding-top:10rem;
-    padding-left:2rem;
-    padding-right:2rem;}
-   .hero-layout{grid-template-columns:0.9fr 1.1fr;align-items:center;gap:2rem;}
-   .avatar-frame{width:270px;height:360px;margin:auto;}
-   .hero-title{font-size:clamp(4rem,7vw,6rem);}
-   .hero-desc{font-size:1rem;line-height:1.9;}
-   .hero-cta{flex-wrap:wrap;gap:1rem;}
+  nav{padding:0.8rem 1rem;gap:0.7rem;}
+  .nav-logo-img{height:30px;}
+  .nav-links{display:flex;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;align-items:center;gap:0.8rem;width:100%;padding-bottom:0.3rem;touch-action:pan-x;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .nav-links::-webkit-scrollbar{display:none;}
+  .nav-links li{flex:0 0 auto;}
+  .nav-links a{font-size:0.52rem;letter-spacing:0.12em;white-space:nowrap;}
+  .lang-switch{gap:0.35rem;}
+  .lang-btn{padding:0.3rem 0.6rem;font-size:0.5rem;}
 
-  /* GRID CARD */
+  /* HERO */
+  #hero{
+    padding-top:9rem;
+    padding-left:1.5rem;
+    padding-right:1.5rem;}
+  .hero-layout{grid-template-columns:1fr 1fr;gap:1.5rem;align-items:center;}
+  .avatar-frame{width:220px;height:300px;margin:auto;}
+  .hero-title{font-size:clamp(3.2rem,6vw,5rem);}
+  .hero-subtitle{font-size:0.72rem;}
+  .hero-desc{font-size:0.92rem;line-height:1.8;}
+  .hero-cta{gap:0.8rem;}
+  .hero-cta .btn{padding:0.9rem 1.4rem;}
+
+  /* GRID */
   .sports-grid,
   .community-grid,
   .apps-grid,
-  .edu-grid{grid-template-columns:repeat(2,1fr);}}
+  .edu-grid{grid-template-columns:repeat(2,1fr);gap:1.5rem;}}
   
 </style>
 </head>

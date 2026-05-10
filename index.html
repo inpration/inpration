@@ -37,6 +37,9 @@ nav{
 .nav-links a{font-size:0.72rem;font-weight:600;letter-spacing:0.22em;color:var(--steel);text-decoration:none;text-transform:uppercase;transition:color 0.3s;position:relative}
 .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--accent);transition:width 0.3s}
 .nav-links a:hover{color:var(--accent)}.nav-links a:hover::after{width:100%}
+.lang-switch{display:flex;align-items:center;gap:0.5rem;}
+.lang-switch button{background:transparent;border:1px solid var(--glass-border);color:var(--steel);padding:0.45rem 0.7rem;font-family:'Orbitron',monospace;font-size:0.55rem;letter-spacing:0.15em;cursor:pointer;transition:all .3s ease;}
+.lang-switch button:hover{color:var(--accent);border-color:var(--accent);box-shadow:0 0 10px rgba(79,195,247,0.25);}
 
 /* PROGRESS */
 .progress-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--accent),rgba(79,195,247,0.25));z-index:9999;width:0%;transition:width 0.1s}
@@ -324,6 +327,11 @@ nav{padding:1rem 2rem;}
     <li><a href="#community">Community</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+<!-- LANGUAGE SWITCH -->
+  <div class="lang-switch">
+    <button onclick="setLanguage('id')">ID</button>
+    <button onclick="setLanguage('en')">EN</button>
+  </div> 
 </nav>
 
 <!-- =================== HOME =================== -->
@@ -357,7 +365,7 @@ nav{padding:1rem 2rem;}
           <span>Indra</span>
           <strong>Nasution</strong>
         </h1>
-        <p class="hero-tagline">Profesional · Wirausaha · Enthusiast</p>
+        <p class="hero-tagline">Profesional · Entrepreneur · Enthusiast</p>
         <p class="hero-intro">
           Seorang profesional berpengalaman di bidang keuangan dan operasional dengan rekam jejak
           yang kaya — mulai dari industri pelayaran, jasa transportasi, wirausaha mandiri, hingga
@@ -423,7 +431,7 @@ nav{padding:1rem 2rem;}
           </div>
           <div class="career-desc">
             Menjalankan berbagai usaha secara mandiri meliputi distribusi <strong style="color:var(--white)">air bersih</strong>,
-            perdagangan <strong style="color:var(--white)">ikan laut</strong>, ekspor <strong style="color:var(--white)">arang kelapa</strong>,
+            perdagangan <strong style="color:var(--white)">ikan laut</strong>, memproduksi <strong style="color:var(--white)">arang kelapa</strong>,
             bisnis <strong style="color:var(--white)">skincare</strong>, <strong style="color:var(--white)">pakaian</strong>, serta
             <strong style="color:var(--white)">peralatan tidur dan dapur</strong>. Mengelola seluruh aspek operasional, rantai pasok,
             pemasaran, dan keuangan secara langsung — mengasah jiwa kewirausahaan dan ketangguhan bisnis.
@@ -442,7 +450,7 @@ nav{padding:1rem 2rem;}
           <div class="career-ico">⚓</div>
           <div class="career-header">
             <div>
-              <div class="career-role">Operasional Bongkar Muat Kapal</div>
+              <div class="career-role">Operasional Jasa Bongkar Muat Kapal</div>
               <div class="career-company">Perusahaan Jasa Bongkar Muatan Kapal · Sulawesi Utara</div>
             </div>
             <div class="career-period-badge">2015 — 2017</div>
@@ -478,7 +486,7 @@ nav{padding:1rem 2rem;}
           </div>
           <div class="career-tags">
             <span class="tag">JPT / EMKL</span><span class="tag">Kepabeanan</span>
-            <span class="tag">Ekspor-Impor</span><span class="tag">Dokumentasi</span>
+            <span class="tag">Ekspor-Impor</span><span class="tag">Dokumen</span>
           </div>
         </div>
       </div>
@@ -696,6 +704,15 @@ nav{padding:1rem 2rem;}
         <div class="sport-bar-wrap"><div class="sport-bar" data-width="83"></div></div>
         <div class="sport-pct">80% — Enthusiast</div>
       </div>
+     <div class="sport-card">
+     <span class="sport-emoji">🛡️</span>
+     <div class="sport-name">Clash of Clans</div>
+     <div class="sport-cat">Strategy Mobile Game</div>
+     <div class="sport-bar-wrap"><div class="sport-bar" data-width="78"></div></div>
+     <div class="sport-pct"> 78% — Strategic Player
+  </div>
+</div>
+</div>
     </div>
   </div>
 </section>
@@ -858,16 +875,16 @@ nav{padding:1rem 2rem;}
 <section id="contact">
   <div class="section-inner">
     <div class="section-label">07 — Contact</div>
-    <h2 class="section-title reveal">Hubungi <em>Saya</em></h2>
+    <h2 class="section-title reveal"data-id="Hubungi <em>Saya</em>"data-en="Contact <em>Me</em>">Hubungi <em>Saya</em></h2>
     <div class="contact-layout">
       <div>
         <div class="contact-info">
-          <h3>// REACH OUT</h3>
+         <h3 data-id="// HUBUNGI"data-en="// REACH OUT">// HUBUNGI</h3>
           <a class="contact-item" href="mailto:nasution.p.indra@gmail.com">
             <div class="contact-icon"> <i class="fa-solid fa-envelope"></i> 
             </div>
             <div>
-              <span class="contact-item-type">Email</span>
+              <span class="contact-item-type"data-id="Email"data-en="Email">Email</span>
               <span class="contact-item-label">indra@mail.com</span>
             </div>
           </a>
@@ -991,5 +1008,32 @@ document.getElementById('submitBtn').addEventListener('click',function(){
   setTimeout(()=>{this.textContent=o;this.style.cssText=''},3000);
 });
 </script>
+
+  <script>
+
+function setLanguage(lang){
+
+  document.querySelectorAll('[data-id]').forEach(el => {
+
+    if(lang === 'id'){
+      el.innerHTML = el.getAttribute('data-id');
+    }
+
+    if(lang === 'en'){
+      el.innerHTML = el.getAttribute('data-en');
+    }
+
+  });
+
+  localStorage.setItem('language', lang);
+}
+
+/* LOAD SAVED LANGUAGE */
+const savedLang =
+localStorage.getItem('language') || 'id';
+
+setLanguage(savedLang);
+
+</script> 
 </body>
 </html>

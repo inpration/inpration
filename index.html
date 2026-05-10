@@ -266,32 +266,35 @@ nav{padding:1rem 2rem;}
   .contact-layout{grid-template-columns:1fr;gap:3rem;}}
 
 @media(max-width:768px){
+
+  /* GRID */
   .edu-grid,
   .sports-grid,
   .community-grid,
-  .apps-grid{
-    grid-template-columns:1fr;}
-  nav{padding:0.8rem 1.2rem}.nav-links{gap:0.8rem}
-  .section-inner{padding:6rem 1.5rem 4rem}
-  #hero{padding:0 1.5rem}
-  .hero-layout{grid-template-columns:1fr;gap:2rem;text-align:center}
-  .hero-intro{margin:0 auto 2rem}.hero-cta{justify-content:center}
-  .avatar-frame{width:150px;height:150px}.avatar-inner{font-size:3rem}
-  .contact-layout,.pets-layout{grid-template-columns:1fr}
-  footer{flex-direction:column;text-align:center}
-  
-  /* MOBILE NAV */
+  .apps-grid{grid-template-columns:1fr;}
+
+  /* NAVBAR */
   nav{padding:0.7rem 1rem;flex-direction:column;gap:0.6rem;}
   .nav-logo{min-width:auto;justify-content:center;}
-  .nav-logo-img{height:28px;transform:scale(1.1);}
+  .nav-logo-img{height:28px;transform:none;}
 
-  /* MOBILE MENU */
-  .nav-links{justify-content:center;gap:0.75rem;row-gap:0.45rem;}
+  /* MENU */
+  .nav-links{justify-content:center;flex-wrap:wrap;gap:0.75rem 1rem;}
   .nav-links a{font-size:0.52rem;letter-spacing:0.15em;}
 
+  /* LANGUAGE */
+  .lang-switch{display:flex;justify-content:center;gap:0.5rem;}
+  .lang-btn{padding:0.35rem 0.7rem;font-size:0.55rem;}
+
+  /* SECTION */
+  .section-inner{padding:6rem 1.5rem 4rem;}
+
   /* HERO */
-  #hero{padding-top:14rem;}
-  .hero-layout{grid-template-columns:1fr;text-align:center;gap:2rem;}
+  #hero{
+    padding-top:14rem;
+    padding-left:1.5rem;
+    padding-right:1.5rem;}
+  .hero-layout{grid-template-columns:1fr;gap:2rem;text-align:center;}
   .hero-intro{margin:0 auto 1.5rem;}
   .hero-title{font-size:clamp(3rem,12vw,4.5rem);}
   .hero-subtitle{font-size:0.7rem;letter-spacing:0.2em;}
@@ -304,8 +307,15 @@ nav{padding:1rem 2rem;}
 
   /* BUTTON */
   .hero-cta{justify-content:center;flex-direction:column;width:100%;}
+
   .hero-cta .btn{width:100%;max-width:280px;}
 
+  /* CONTACT */
+  .contact-layout,
+  .pets-layout{grid-template-columns:1fr;}
+
+  /* FOOTER */
+  footer{flex-direction:column;text-align:center;}
 </style>
 </head>
 <body>
